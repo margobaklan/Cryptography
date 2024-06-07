@@ -10,32 +10,6 @@
 
 using namespace std;
 
-__int64 jacobiSymbol(__int64 n, __int64 k)
-{
-    int t = 1;
-
-    assert(k > n > 0 && k % 2 == 1);
-    n %= k;
-    while (n != 0)
-    {
-        while (n % 2 == 0)
-        {
-            n /= 2;
-            int r = k % 8;
-            if (r == 3 || r == 5)
-                t = -t;
-        }
-        swap(n, k);
-        if (n % 4 == 3 && k % 4 == 3)
-            t = -t;
-        n %= k;
-    }
-    if (k == 1)
-        return t;
-    else
-        return 0;
-}
-
 void primeFactors(__int64 n, vector<__int64> &factors)
 {
     if (n % 2 == 0)
